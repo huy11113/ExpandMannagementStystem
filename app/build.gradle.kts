@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.expandmanagementsystem"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.expandmanagementsystem"
