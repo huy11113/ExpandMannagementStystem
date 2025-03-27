@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public   class LoginActivity extends AppCompatActivity {
 
     private EditText etLoginUsername, etLoginPassword;
     private Button btnLogin;
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         } else if (role.equals("student")) {
                             Intent intent = new Intent(LoginActivity.this, StudentActivity.class);
+                            intent.putExtra("username", username); // Truyền username sang StudentActivityhuy nghhyyyyyy
                             startActivity(intent);
                         }
                         finish(); // Đóng LoginActivity sau khi đăng nhập
