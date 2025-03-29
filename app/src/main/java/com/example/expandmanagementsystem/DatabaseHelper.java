@@ -135,6 +135,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return result > 0;
     }
+    // xóa chi tiêu
+    public boolean deleteExpense(int expenseId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsAffected = db.delete(TABLE_EXPENSES, EXPENSE_ID + " = ?",
+                new String[]{String.valueOf(expenseId)});
+        db.close();
+        return rowsAffected > 0;
+    }
 
     // Lấy danh sách chi tiêu theo userId
     public ArrayList<Expense> getExpenses(int userId) {
@@ -307,4 +315,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return monthlyExpenses;
     }
+
 }
