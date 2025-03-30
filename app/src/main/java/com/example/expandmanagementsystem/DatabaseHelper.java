@@ -86,7 +86,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "frequency TEXT," +        // daily, weekly, monthly, yearly
                 "FOREIGN KEY(user_id) REFERENCES users(id))";
         db.execSQL(CREATE_RECURRING_EXPENSES_TABLE);
+
+        String createLimitTable = "CREATE TABLE expense_limit (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "category TEXT UNIQUE, " + // Chỉ có một giới hạn cho mỗi danh mục
+                "limit_amount REAL)";
+        db.execSQL(createLimitTable);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -95,6 +102,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUDGETS);
         db.execSQL("DROP TABLE IF EXISTS  recurring_expenses");
         onCreate(db);
+
+        if (oldVersion < 2) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS expense_limit (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "category TEXT UNIQUE, " +
+                    "limit_amount REAL)");
+        }
     }
 
     // Thêm người dùng mới
@@ -387,5 +401,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return list;
     }
+    public double getUserBudget(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT max_budget FROM budgets WHERE user_id=?", new String[]{String.valueOf(userId)});
+        double budget = 0;
+        if (cursor.moveToFirst()) {
+            budget = cursor.getDouble(0);
+        }
+        cursor.close();
+        db.close();
+        return budget;
+    }
+    public void setExpenseLimit(String category, double limit) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("category", category);
+        values.put("limit_amount", limit);
 
+        db.insertWithOnConflict("expense_limit", null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    // Lấy giới hạn chi tiêu của một danh mục
+    public double getExpenseLimit(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT limit_amount FROM expense_limit WHERE category = ?", new String[]{category});
+        if (cursor.moveToFirst()) {
+            double limit = cursor.getDouble(0);
+            cursor.close();
+            return limit;
+        }
+        cursor.close();
+        return -1; // Nếu không có giới hạn
+    }
+
+    // Tính tổng chi tiêu của một danh mục
+    public double getTotalExpenseByCategory(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SUM(amount) FROM expenses WHERE category = ?", new String[]{category});
+        if (cursor.moveToFirst()) {
+            double total = cursor.getDouble(0);
+            cursor.close();
+            return total;
+        }
+        cursor.close();
+        return 0;
+    }
 }

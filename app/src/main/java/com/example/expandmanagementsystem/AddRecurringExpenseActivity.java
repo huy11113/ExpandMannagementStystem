@@ -1,6 +1,10 @@
 package com.example.expandmanagementsystem;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +18,7 @@ public class AddRecurringExpenseActivity extends AppCompatActivity {
     private EditText etTitle, etAmount, etStartDate;
     private Spinner spinnerRecurrence;
     private Button btnSave;
-    private RecurringExpenseDBHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
