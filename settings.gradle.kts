@@ -18,6 +18,17 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS) // Buộc dùng kho ở settings
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") } // Thêm JitPack cho MPAndroidChart
+    }
+}
+
+include(":app") // Thêm mô-đun app nếu chưa có
 
 rootProject.name = "ExpandManagementSystem"
 include(":app")

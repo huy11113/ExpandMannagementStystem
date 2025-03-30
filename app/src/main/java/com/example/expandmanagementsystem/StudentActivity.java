@@ -24,6 +24,7 @@ public class StudentActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private ArrayAdapter<Expense> expenseAdapter;
     private ArrayList<Expense> expenseList;
+    private Button btnDeleteExpense;
     private int userId;
     private Expense selectedExpense = null; // Lưu mục chi tiêu được chọn để chỉnh sửa
 
@@ -41,6 +42,7 @@ public class StudentActivity extends AppCompatActivity {
         btnEditExpense = findViewById(R.id.btnEditExpense);
         lvExpenses = findViewById(R.id.lvExpenses);
         dbHelper = new DatabaseHelper(this);
+        btnDeleteExpense = findViewById(R.id.btnDeleteExpense);
 
         // Lấy userId từ Intent
         String username = getIntent().getStringExtra("username");
@@ -57,6 +59,7 @@ public class StudentActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(categoryAdapter);
+
 
 
         // Thiết lập danh sách chi tiêu
@@ -112,6 +115,56 @@ public class StudentActivity extends AppCompatActivity {
                 }
             }
         });
+        //delete
+        lvExpenses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedExpense = expenseList.get(position);
+                etDescription.setText(selectedExpense.getDescription());
+                etAmount.setText(String.valueOf(selectedExpense.getAmount()));
+                etDate.setText(selectedExpense.getDate());
+                spinnerCategory.setSelection(((ArrayAdapter<String>) spinnerCategory.getAdapter())
+                        .getPosition(selectedExpense.getCategory()));
+                btnEditExpense.setEnabled(true);
+                btnDeleteExpense.setEnabled(true); // Bật nút xóa
+            }
+        });
+
+        btnDeleteExpense.setOnClickListener(v -> {
+            if (selectedExpense == null) {
+                Toast.makeText(StudentActivity.this, "Please select an expense to delete", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            boolean isDeleted = dbHelper.deleteExpense(selectedExpense.getId());
+            if (isDeleted) {
+                Toast.makeText(StudentActivity.this, "Expense deleted", Toast.LENGTH_SHORT).show();
+                clearFields();
+                refreshExpenseList();
+                btnEditExpense.setEnabled(false);
+                btnDeleteExpense.setEnabled(false);
+                selectedExpense = null;
+            } else {
+                Toast.makeText(StudentActivity.this, "Failed to delete expense", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnDeleteExpense.setOnClickListener(v -> {
+            if (selectedExpense == null) {
+                Toast.makeText(StudentActivity.this, "Please select an expense to delete", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            boolean isDeleted = dbHelper.deleteExpense(selectedExpense.getId());
+            if (isDeleted) {
+                Toast.makeText(StudentActivity.this, "Expense deleted", Toast.LENGTH_SHORT).show();
+                clearFields();
+                refreshExpenseList();
+                btnEditExpense.setEnabled(false);
+                btnDeleteExpense.setEnabled(false);
+                selectedExpense = null;
+            } else {
+                Toast.makeText(StudentActivity.this, "Failed to delete expense", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         //Xử lý nút Edit Expense
@@ -155,6 +208,8 @@ public class StudentActivity extends AppCompatActivity {
         });
     }
 
+
+
     // Xóa các trường nhập liệu
     private void clearFields() {
         etDescription.setText("");
@@ -169,5 +224,7 @@ public class StudentActivity extends AppCompatActivity {
         expenseList.addAll(dbHelper.getExpenses(userId));
         expenseAdapter.notifyDataSetChanged();
     }
+
+
 }
 

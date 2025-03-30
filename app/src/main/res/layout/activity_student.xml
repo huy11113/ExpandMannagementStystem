@@ -68,7 +68,16 @@
             android:layout_weight="1"
             android:text="Edit Selected"
             android:enabled="false" /> <!-- Mặc định disable, chờ chọn mục -->
+        <Button
+            android:id="@+id/btnDeleteExpense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete Selected"
+            android:enabled="false"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
+
 
     <!-- Danh sách chi tiêu -->
     <ListView
