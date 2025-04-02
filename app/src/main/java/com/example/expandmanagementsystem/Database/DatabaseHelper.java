@@ -1,10 +1,12 @@
-package com.example.expandmanagementsystem;
+package com.example.expandmanagementsystem.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.expandmanagementsystem.Activity.Expense;
 
 import java.util.ArrayList;
 import java.util.HashMap;
