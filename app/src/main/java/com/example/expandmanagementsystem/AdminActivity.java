@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem.Activity;
+package com.example.expandmanagementsystem;
 
 import android.os.Bundle;
 
@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.example.expandmanagementsystem.R;
 
 public class AdminActivity extends AppCompatActivity {
 
