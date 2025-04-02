@@ -78,10 +78,6 @@ public class MenuActivity extends AppCompatActivity {
             budgetSubmenu.setVisibility(isBudgetSubmenuVisible ? View.VISIBLE : View.GONE);
         });
 
-        // Xử lý sự kiện nhấn cho các mục con trong submenu
-        budgetSettingCard.setOnClickListener(v -> navigateToActivity(BudgetSettingActivity.class));
-        expenseOverviewCard.setOnClickListener(v -> navigateToActivity(ExpenseOverviewActivity.class));
-        expenseReportsCard.setOnClickListener(v -> navigateToActivity(ExpenseReportsActivity.class));
     }
 
     // Phương thức điều hướng chung
