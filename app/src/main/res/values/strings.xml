@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ExpandManagementSystem</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="category_prompt">Select Category</string>
+    <string name="month_prompt">Select Month</string>
+    <string name="year_prompt">Select Year</string>
+
+
 </resources>
