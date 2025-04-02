@@ -1,6 +1,4 @@
-package com.example.expandmanagementsystem;
-
-import static android.content.Intent.getIntent;
+package com.example.expandmanagementsystem.Activity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -9,6 +7,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.expandmanagementsystem.Database.DatabaseHelper;
+import com.example.expandmanagementsystem.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem;
+package com.example.expandmanagementsystem.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.expandmanagementsystem.Database.DatabaseHelper;
+import com.example.expandmanagementsystem.R;
 
 public class MainActivity extends AppCompatActivity {
 

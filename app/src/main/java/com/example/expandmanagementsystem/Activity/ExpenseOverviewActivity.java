@@ -1,7 +1,6 @@
-package com.example.expandmanagementsystem;
+package com.example.expandmanagementsystem.Activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -10,6 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.expandmanagementsystem.Database.DatabaseHelper;
+import com.example.expandmanagementsystem.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
