@@ -1,11 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
     <!-- Tiêu đề -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4CAF50"
+            android:contentDescription="Expense Tracking Title"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Expense Tracking"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Form nhập chi tiêu -->
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleTextView"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_background"
+            android:contentDescription="Enter Expense Description"
+            android:hint="Description"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/amountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionEditText"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_background"
+            android:contentDescription="Enter Expense Amount"
+            android:hint="Amount ($)"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/dateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amountEditText"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_background"
+            android:contentDescription="Select Expense Date"
+            android:hint="Date (yyyy-MM-dd)"
+            android:inputType="date"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/categoryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dateEditText"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_background"
+            android:contentDescription="Enter Expense Category"
+            android:hint="Category"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <!-- Danh sách chi tiêu -->
+        <ListView
+            android:id="@+id/expenseListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/backFab"
+            android:layout_below="@id/categoryEditText"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Expense List"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+
+        <!-- Nút Back (FloatingActionButton) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:contentDescription="Back to Menu"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="@android:color/white"
+            app:fabSize="normal" />
+
+        <!-- Nút Add Expense (FloatingActionButton) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addExpenseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#4CAF50"
+            android:contentDescription="Add Expense"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@android:color/white"
+            app:fabSize="normal" />
+
+    </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,69 +128,87 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:background="#4CAF50"
+        android:contentDescription="Expense Tracking Title" />
 
     <!-- Form nhập chi tiêu -->
     <EditText
-        android:id="@+id/etDescription"
+        android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description (e.g., Monthly rent)"
+        android:layout_marginTop="16dp"
+        android:hint="Description"
         android:inputType="text"
-        android:layout_marginBottom="8dp" />
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:contentDescription="Enter Expense Description" />
 
     <EditText
-        android:id="@+id/etAmount"
+        android:id="@+id/amountEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Amount (e.g., 500000)"
+        android:layout_marginTop="8dp"
+        android:hint="Amount ($)"
         android:inputType="numberDecimal"
-        android:layout_marginBottom="8dp" />
+        android:imeOptions="actionDone"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:contentDescription="Enter Expense Amount" />
 
     <EditText
-        android:id="@+id/etDate"
+        android:id="@+id/dateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date (e.g., 2025-03-26)"
+        android:layout_marginTop="8dp"
+        android:hint="Date (yyyy-MM-dd)"
         android:inputType="date"
-        android:layout_marginBottom="8dp" />
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:contentDescription="Select Expense Date" />
 
-    <Spinner
-        android:id="@+id/spinnerCategory"
+    <EditText
+        android:id="@+id/categoryEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginTop="8dp"
+        android:hint="Category"
+        android:inputType="text"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:contentDescription="Enter Expense Category" />
 
-    <!-- Nút thêm và chỉnh sửa -->
-    <LinearLayout
+    <Button
+        android:id="@+id/addExpenseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-
-        <Button
-            android:id="@+id/btnAddExpense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Expense"
-            android:layout_marginEnd="8dp" />
-
-        <Button
-            android:id="@+id/btnEditExpense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit Selected"
-            android:enabled="false" /> <!-- Mặc định disable, chờ chọn mục -->
-    </LinearLayout>
+        android:layout_marginTop="16dp"
+        android:text="Add Expense"
+        android:background="@drawable/rounded_button"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:contentDescription="Add Expense Button" />
 
     <!-- Danh sách chi tiêu -->
     <ListView
-        android:id="@+id/lvExpenses"
+        android:id="@+id/expenseListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#F5F5F5" />
-
+        android:layout_marginTop="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:contentDescription="Expense List" />
+    <!-- Nút Back (FloatingActionButton) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/ic_menu_revert"
+        android:contentDescription="Back to Menu"
+        android:backgroundTint="@android:color/holo_green_light"/>
 </LinearLayout>
