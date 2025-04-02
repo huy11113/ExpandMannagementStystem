@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem.Activity;
+package com.example.expandmanagementsystem;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -7,9 +7,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.expandmanagementsystem.Database.DatabaseHelper;
-import com.example.expandmanagementsystem.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

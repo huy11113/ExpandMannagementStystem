@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem.Activity;
+package com.example.expandmanagementsystem;
 
 public class Expense {
     private int id;

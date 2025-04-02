@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem.Activity;
+package com.example.expandmanagementsystem;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.expandmanagementsystem.Database.DatabaseHelper;
-import com.example.expandmanagementsystem.R;
 
 public   class LoginActivity extends AppCompatActivity {
 
