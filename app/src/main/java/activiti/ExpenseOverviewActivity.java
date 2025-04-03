@@ -1,4 +1,4 @@
-package com.example.expandmanagementsystem.Activity;
+package activiti;
 
 // Import các thư viện cần thiết
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import com.example.expandmanagementsystem.Activity.MenuActivity;
 import com.example.expandmanagementsystem.CategoryBreakdown;
 import com.example.expandmanagementsystem.CategoryBreakdownAdapter;
 import com.example.expandmanagementsystem.DataBase.DatabaseHelper;
