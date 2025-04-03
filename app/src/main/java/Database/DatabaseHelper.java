@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.expandmanagementsystem.model.Budget;
 import com.example.expandmanagementsystem.model.Expense;
+import com.example.expandmanagementsystem.model.RecurringExpense;
+import com.example.expandmanagementsystem.model.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

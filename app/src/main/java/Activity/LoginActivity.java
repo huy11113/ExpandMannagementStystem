@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.expandmanagementsystem.DataBase.DatabaseHelper;
 import com.example.expandmanagementsystem.R;
+import com.example.expandmanagementsystem.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -66,9 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent;
                 if (role.equals("admin")) {
                     // Chuyển đến màn hình dành cho admin
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent = new Intent(LoginActivity.this, com.example.expandmanagementsystem.Activity.MainActivity.class);
                 } else if (role.equals("student")) {
-                    intent = new Intent(LoginActivity.this, MenuActivity.class);
+                    intent = new Intent(LoginActivity.this, com.example.expandmanagementsystem.Activity.MenuActivity.class);
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid role", Toast.LENGTH_SHORT).show();
                     return;
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Chuyển đến màn hình Register
         tvRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Sửa MainActivity thành RegisterActivity
+            Intent intent = new Intent(LoginActivity.this, com.example.expandmanagementsystem.Activity.MainActivity.class); // Sửa MainActivity thành RegisterActivity
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish(); // Đóng LoginActivity

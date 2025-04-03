@@ -44,7 +44,7 @@ public class MenuActivity extends AppCompatActivity {
         // Kiểm tra vai trò (chỉ cho phép "student" truy cập MenuActivity)
         if (!role.equals("student")) {
             Toast.makeText(this, "Access denied. This page is for students only.", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MenuActivity.this, com.example.expandmanagementsystem.Activity.LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
@@ -68,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
         CardView expenseReportsCard = findViewById(R.id.expenseReportsCard);
 
         // Xử lý sự kiện nhấn cho các CardView chính
-        expenseCard.setOnClickListener(v -> navigateToActivity(StudentActivity.class));
+        expenseCard.setOnClickListener(v -> navigateToActivity(com.example.expandmanagementsystem.Activity.StudentActivity.class));
         recurringExpenseCard.setOnClickListener(v -> navigateToActivity(RecurringExpensesActivity.class));
         logoutCard.setOnClickListener(v -> logout());
 
@@ -78,6 +78,10 @@ public class MenuActivity extends AppCompatActivity {
             budgetSubmenu.setVisibility(isBudgetSubmenuVisible ? View.VISIBLE : View.GONE);
         });
 
+        // Xử lý sự kiện nhấn cho các mục con trong submenu
+        budgetSettingCard.setOnClickListener(v -> navigateToActivity(BudgetSettingActivity.class));
+        expenseOverviewCard.setOnClickListener(v -> navigateToActivity(ExpenseOverviewActivity.class));
+        expenseReportsCard.setOnClickListener(v -> navigateToActivity(ExpenseReportsActivity.class));
     }
 
     // Phương thức điều hướng chung
@@ -96,7 +100,7 @@ public class MenuActivity extends AppCompatActivity {
         editor.apply();
 
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MenuActivity.this, com.example.expandmanagementsystem.Activity.LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -106,7 +110,7 @@ public class MenuActivity extends AppCompatActivity {
     // Phương thức xử lý khi thông tin người dùng không hợp lệ
     private void handleInvalidUser() {
         Toast.makeText(this, "User information not found. Please log in again.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MenuActivity.this, com.example.expandmanagementsystem.Activity.LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dbHelper.addUser(username, password, role)) {
                     Toast.makeText(MainActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                     // Chuyển đến màn hình đăng nhập sau khi đăng ký thành công
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(MainActivity.this, com.example.expandmanagementsystem.Activity.LoginActivity.class);
                     startActivity(intent);
                     finish(); // Đóng RegisterActivity
                 } else {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, com.example.expandmanagementsystem.Activity.LoginActivity.class);
                 startActivity(intent);
                 finish(); // Đóng RegisterActivity
             }

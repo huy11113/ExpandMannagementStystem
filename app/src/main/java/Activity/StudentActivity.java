@@ -68,7 +68,7 @@ public class StudentActivity extends AppCompatActivity {
 
         // Xử lý sự kiện khi nhấn nút Back: Chuyển về MenuActivity
         backFab.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentActivity.this, MenuActivity.class);
+            Intent intent = new Intent(StudentActivity.this, com.example.expandmanagementsystem.Activity.MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
